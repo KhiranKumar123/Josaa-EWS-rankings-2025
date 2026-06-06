@@ -1,0 +1,11 @@
+{
+  "name": "jossa-counselling-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python -m http.server 5173",
+    "build": "node -e \"console.log('Static app: no build step required')\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

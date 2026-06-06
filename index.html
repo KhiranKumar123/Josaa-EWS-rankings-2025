@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoSAA Counselling Finder</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Previous year JoSAA data</p>
+          <h1>JoSAA Counselling Finder</h1>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="icon-button" id="resetFilters" title="Reset filters">Reset</button>
+          <button type="button" class="primary-button" id="exportCsv">Download CSV</button>
+        </div>
+      </header>
+
+      <section class="rank-panel">
+        <label>
+          <span>Rank type</span>
+          <select id="rankTypeInput">
+            <option value="advanced">JEE ADVANCED RANK</option>
+            <option value="main">JEE MAIN RANK</option>
+          </select>
+        </label>
+        <label>
+          <span>Your rank</span>
+          <input id="rankInput" type="number" min="0" placeholder="Enter rank" />
+        </label>
+        <label>
+          <span>Rank range +/-</span>
+          <input id="rankRangeInput" type="number" min="0" value="500" />
+        </label>
+        <div class="rank-note">Most possible rows use closing rank above your rank. Chance rows use closing rank between rank - range and your rank.</div>
+      </section>
+
+      <section class="controls-grid" id="controlsGrid"></section>
+
+      <section class="results-section">
+        <div class="results-toolbar">
+          <div>
+            <h2>Most Possible Option</h2>
+            <p id="possibleCount">0 matching programs</p>
+          </div>
+          <div class="sort-actions">
+            <button type="button" class="sort-button" data-table="possible" data-sort="openingRank">Opening rank high to low</button>
+            <button type="button" class="sort-button" data-table="possible" data-sort="closingRank">Closing rank high to low</button>
+            <button type="button" class="sort-button" data-table="possible" data-sort="gap">Gap high to low</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>College</span>
+                    <div class="table-filter" data-table="possible" data-filter="college"></div>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>Branch / Department</span>
+                    <div class="table-filter" data-table="possible" data-filter="branch"></div>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>Degree</span>
+                    <div class="table-filter" data-table="possible" data-filter="degree"></div>
+                  </div>
+                </th>
+                <th>Opening Rank</th>
+                <th>Closing Rank</th>
+                <th>Gap</th>
+              </tr>
+            </thead>
+            <tbody id="possibleBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="results-section">
+        <div class="results-toolbar">
+          <div>
+            <h2>Chance</h2>
+            <p id="chanceCount">0 matching programs</p>
+          </div>
+          <div class="sort-actions">
+            <button type="button" class="sort-button" data-table="chance" data-sort="openingRank">Opening rank high to low</button>
+            <button type="button" class="sort-button" data-table="chance" data-sort="closingRank">Closing rank high to low</button>
+            <button type="button" class="sort-button" data-table="chance" data-sort="gap">Gap high to low</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>College</span>
+                    <div class="table-filter" data-table="chance" data-filter="college"></div>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>Branch / Department</span>
+                    <div class="table-filter" data-table="chance" data-filter="branch"></div>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-with-filter">
+                    <span>Degree</span>
+                    <div class="table-filter" data-table="chance" data-filter="degree"></div>
+                  </div>
+                </th>
+                <th>Opening Rank</th>
+                <th>Closing Rank</th>
+                <th>Gap</th>
+              </tr>
+            </thead>
+            <tbody id="chanceBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="charts-grid">
+        <article class="chart-card">
+          <h2>Most Possible: Colleges vs Branch</h2>
+          <div class="bar-chart" id="possibleChart"></div>
+        </article>
+        <article class="chart-card">
+          <h2>Chance: Colleges vs Branch</h2>
+          <div class="bar-chart" id="chanceChart"></div>
+        </article>
+        <article class="chart-card chart-card-wide">
+          <h2>Combined: Colleges vs Branch</h2>
+          <div class="bar-chart" id="combinedChart"></div>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
